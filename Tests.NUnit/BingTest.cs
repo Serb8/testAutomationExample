@@ -1,4 +1,6 @@
-﻿using NUnit.Allure.Attributes;
+﻿using System;
+using Allure.Commons;
+using NUnit.Allure.Attributes;
 using NUnit.Framework;
 using Pages.Bing;
 using Seleniq.Extensions.Selenium;
@@ -26,6 +28,7 @@ namespace Tests.NUnit
         [TestCase("google")]
         public void ValidateSearchTitle(string query)
         {
+            Console.WriteLine(AllureLifecycle.Instance.ResultsDirectory);
             Component.SetText(query).SubmitButton.JsHighlight().Click();
             ValidateTitleContains(query);
         }
